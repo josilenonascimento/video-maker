@@ -6,7 +6,7 @@ File: `algorithmia.json`
 
 ```
 {
-  "apiKey": "YOU API KEY"
+  "apiKey": "YOUR API KEY"
 }
 ```
 
@@ -16,8 +16,8 @@ File: `watson-nlu.json`
 
 ```
 {
-  "apiKey": "YOU API KEY",
-  "url": "YOU URL HERE"
+  "apiKey": "YOUR API KEY",
+  "url": "YOUR URL HERE"
 }
 ```
 
@@ -27,7 +27,7 @@ File: `google-search.json`
 
 ```
 {
-  "apiKey": "YOU API KEY HERE",
-  "searchEngineId": "YOU CUSTOM SEARCH ID"
+  "apiKey": "YOUR API KEY HERE",
+  "searchEngineId": "YOUR CUSTOM SEARCH ID"
 }
 ```
