@@ -16,8 +16,18 @@ File: `watson-nlu.json`
 
 ```
 {
-  "apiKey": "wGtDTjaQb9BpysmCXim_siKLY8pNc_ZFAVbPkGEmFeie",
-  "url": "https://gateway.watsonplatform.net/natural-language-understanding/api"
+  "apiKey": "YOU API KEY",
+  "url": "YOU URL HERE"
 }
-i
+```
+
+## Google API
+
+File: `google-search.json`
+
+```
+{
+  "apiKey": "YOU API KEY HERE",
+  "searchEngineId": "YOU CUSTOM SEARCH ID"
+}
 ```
