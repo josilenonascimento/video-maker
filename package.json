@@ -23,6 +23,7 @@
     "ibm-watson": "^5.4.0",
     "image-downloader": "^3.5.0",
     "readline-sync": "^1.4.10",
-    "sbd": "^1.0.16"
+    "sbd": "^1.0.16",
+    "videoshow": "^0.1.12"
   }
 }
