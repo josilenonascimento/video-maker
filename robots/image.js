@@ -6,6 +6,7 @@ const state = require('./state.js')
 const googleSearchCredentials = require('../credentials/google-search.json')
 
 async function robot() {
+  console.log('> [image-robot] Starting...')
   const content = state.load()
   
   await fetchImagesOfAllSentences(content)
@@ -13,11 +14,19 @@ async function robot() {
   state.save(content)
 
   async function fetchImagesOfAllSentences(content) {
-    for (const sentence of content.sentences) {
-      const query = `${content.searchTerm} ${sentence.keywords[0]}`
-      sentence.images = await fetchGoogleAndReturnImagesLinks(query)
+    for (let sentenceIndex = 0; sentenceIndex < content.sentences.length; sentenceIndex++) {
+      let query
+      
+      if (sentenceIndex === 0) {
+        query = `${content.searchTerm}`
+      } else {
+        query = `${content.searchTerm} ${content.sentences[sentenceIndex].keywords[0]}`
+      }
 
-      sentence.googleSearchQuery = query
+      console.log(`> [image-robot] Querying Google Images with: "${query}"`)
+
+      content.sentences[sentenceIndex].images = await fetchGoogleAndReturnImagesLinks(query)
+      content.sentences[sentenceIndex].googleSearchQuery = query
     }
   }
  
@@ -48,16 +57,16 @@ async function robot() {
         try {
           
           if (content.downloadImages.includes(imageUrl)) {
-            throw new Error('Imagem já foi baixada')
+            throw new Error('Image already downloaded')
           }
           await downloadImage(imageUrl, `${sentenceIndex}-original.png`)
 
           content.downloadImages.push(imageUrl)
 
-          console.log(`>[${sentenceIndex}][${imageIndex}] Baixou a imagem com sucesso: ${imageUrl}`)
+          console.log(`> [image-robot] [${sentenceIndex}][${imageIndex}] Image successfully downloaded: ${imageUrl}`)
           break
         } catch (error) {
-          console.log(`>[${sentenceIndex}][${imageIndex}] Erro ao baixar (${imageUrl}): ${error}`)
+          console.log(`> [image-robot] [${sentenceIndex}][${imageIndex}] Error (${imageUrl}): ${error}`)
         
         }
       }

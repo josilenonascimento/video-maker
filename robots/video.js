@@ -3,6 +3,7 @@ const videoshow = require('videoshow')
 const state = require('./state.js')
 
 async function robot() {
+  console.log('> [video-robot] Starting...')
   const content = state.load()
 
   await convertAllImages(content)
@@ -50,7 +51,7 @@ async function robot() {
             return reject(error)
           }
 
-          console.log(`> Image converted: ${inputFile}`)
+          console.log(`> [video-robot] Image converted: ${inputFile}`)
           resolve()
         })
     })
@@ -109,7 +110,7 @@ async function robot() {
             return reject(error)
           }
 
-          console.log(`> Sentence created: ${outputFile}`)
+          console.log(`> [video-robot] Sentence created: ${outputFile}`)
           resolve()
         })
         
@@ -125,7 +126,7 @@ async function robot() {
             return reject(error)
           }
 
-          console.log('> Creating YouTube thumbnail')
+          console.log('> [video-robot] YouTube thumbnail created')
           resolve()
         })
     })
@@ -136,7 +137,7 @@ async function robot() {
 
       let images = []
 
-      console.log(`> Starting...`)
+      console.log(`> [video-robot] Starting render`)
 
       for (let sentenceIndex = 0; sentenceIndex < content.sentences.length; sentenceIndex++) {
         images.push({
@@ -187,7 +188,7 @@ async function robot() {
           reject(error)
         })
         .on('end', output => {
-          console.log(`Video created in: ${output}`)
+          console.log(`> [video-robot] Video created in: ${output}`)
           resolve()
         })
     })
