@@ -70,7 +70,6 @@ async function robot() {
     async function downloadImage(url, fileName) {
       return imageDownloader.image({
         url,
-        url,
         dest: `./content/${fileName}`
       })
     }
